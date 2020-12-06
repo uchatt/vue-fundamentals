@@ -17,10 +17,10 @@
     </div>
     <button class="add-to-cart" @click="addToCart()">Add to Cart</button>
     <div class="top-row">
-      <!-- <div class="robot-name">
+      <div class="robot-name">
           {{ selectedRobot.head.title }}
           <span v-if="selectedRobot.head.onSale" class="sale">Sale!</span>
-        </div> -->
+        </div>
       <PartSelector
         :parts="availableParts.heads"
         position="top"
@@ -123,6 +123,10 @@ export default {
   position: absolute;
   top: -25px;
   text-align: center;
+  font-weight: 200;
+  font-size: 1.2rem;
+  letter-spacing: .1em;
+  opacity: .8;
 }
 
 .content {
@@ -176,4 +180,5 @@ th {
 .rotate-left {
   transform: rotate(-90deg);
 }
+
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="part" :class="position">
-    <img @click="showPartInfo()" :src="selectedPart.src" title="arm"  alt=""/>
+    <img @click="showPartInfo()" :src="selectedPart.src" title="arm" alt="" />
     <button @click="selectPreviousPart()" class="prev-selector"></button>
     <button @click="selectNextPart()" class="next-selector"></button>
     <span class="sale" v-show="selectedPart.onSale">Sale!</span>
@@ -48,7 +48,11 @@ export default {
   },
   methods: {
     showPartInfo() {
-      this.$router.push('/parts');
+      /** Use object syntax to pass parameters to routes. */
+      this.$router.push({
+        name: 'Parts',
+        params: { id: this.selectedPart.id, partType: this.selectedPart.type },
+      });
     },
     emitSelectedPart() {
       this.$emit('partSelected', this.selectedPart);
@@ -106,7 +110,7 @@ export default {
 }
 .part img:hover {
   cursor: pointer;
-  opacity: .8;
+  opacity: 0.8;
 }
 .top {
   border-bottom: none;

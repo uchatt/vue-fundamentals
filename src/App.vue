@@ -44,7 +44,7 @@ body {
 
 a {
   text-decoration: none;
-  color: #ffff8a;
+  color: #333333;
 }
 
 </style>
