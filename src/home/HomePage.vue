@@ -1,8 +1,8 @@
 <template>
   <div class="home">
-    <div><img class="robot" src="../assets/robot-home.png" aria-hidden="true" /></div>
+    <div><img class="robot" src="../assets/robot-home.png" aria-hidden="true"  alt=""/></div>
     <div class="get-started">
-      <a href="">Get Started with Vue Again.</a>
+      <router-link to="/build">Get Started </router-link> building your first robot!
     </div>
   </div>
 </template>
@@ -23,5 +23,10 @@ export default {
 }
 .robot {
   height: 300px;
+}
+
+a {
+  color: #00d0d0;
+  letter-spacing: .087rem;
 }
 </style>

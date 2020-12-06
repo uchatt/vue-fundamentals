@@ -3,15 +3,15 @@
     <div class="preview">
       <div class="preview-content">
         <div class="top-row">
-          <img :src="selectedRobot.head.src" />
+          <img :src="selectedRobot.head.src"  alt=""/>
         </div>
         <div class="middle-row">
-          <img :src="selectedRobot.leftArm.src" class="rotate-left" />
-          <img :src="selectedRobot.torso.src" />
-          <img :src="selectedRobot.rightArm.src" class="rotate-right" />
+          <img :src="selectedRobot.leftArm.src" class="rotate-left"  alt=""/>
+          <img :src="selectedRobot.torso.src"  alt=""/>
+          <img :src="selectedRobot.rightArm.src" class="rotate-right"  alt=""/>
         </div>
         <div class="bottom-row">
-          <img :src="selectedRobot.base.src" />
+          <img :src="selectedRobot.base.src"  alt=""/>
         </div>
       </div>
     </div>
@@ -134,7 +134,6 @@ export default {
   right: 0;
   width: 220px;
   top: 145px;
-  padding: 3px;
   font-weight: bold;
   text-transform: uppercase;
   background: #ffff40b0;
@@ -145,8 +144,7 @@ export default {
 td,
 th {
   text-align: left;
-  padding: 5px;
-  padding-right: 20px;
+  padding: 5px 20px 5px 5px;
 }
 
 .cost {
