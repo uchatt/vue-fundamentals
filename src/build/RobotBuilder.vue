@@ -3,24 +3,24 @@
     <div class="preview">
       <div class="preview-content">
         <div class="top-row">
-          <img :src="selectedRobot.head.src"  alt=""/>
+          <img :src="selectedRobot.head.src" alt="" />
         </div>
         <div class="middle-row">
-          <img :src="selectedRobot.leftArm.src" class="rotate-left"  alt=""/>
-          <img :src="selectedRobot.torso.src"  alt=""/>
-          <img :src="selectedRobot.rightArm.src" class="rotate-right"  alt=""/>
+          <img :src="selectedRobot.leftArm.src" class="rotate-left" alt="" />
+          <img :src="selectedRobot.torso.src" alt="" />
+          <img :src="selectedRobot.rightArm.src" class="rotate-right" alt="" />
         </div>
         <div class="bottom-row">
-          <img :src="selectedRobot.base.src"  alt=""/>
+          <img :src="selectedRobot.base.src" alt="" />
         </div>
       </div>
     </div>
     <button class="add-to-cart" @click="addToCart()">Add to Cart</button>
     <div class="top-row">
       <div class="robot-name">
-          {{ selectedRobot.head.title }}
-          <span v-if="selectedRobot.head.onSale" class="sale">Sale!</span>
-        </div>
+        {{ selectedRobot.head.title }}
+        <span v-if="selectedRobot.head.onSale" class="sale">Sale!</span>
+      </div>
       <PartSelector
         :parts="availableParts.heads"
         position="top"
@@ -77,11 +77,24 @@ import PartSelector from './PartSelector.vue';
 
 export default {
   name: 'RobotBuilder',
+  beforeRouteLeave(to, from, next) {
+    if (this.addedToCard) {
+      next(true);
+    } else {
+      /* eslint no-alert: 0 */
+      /* eslint no-restricted-globals: 0 */
+      const response = confirm(
+        'Your have not added your robot to the card, are you sure you want to leave?',
+      );
+      next(response);
+    }
+  },
   components: { PartSelector },
   data() {
     return {
       availableParts,
       cart: [],
+      addedToCard: false,
       selectedRobot: {
         head: {},
         leftArm: {},
@@ -100,6 +113,7 @@ export default {
         + robot.rightArm.cost
         + robot.base.cost;
       this.cart.push({ ...robot, cost });
+      this.addedToCard = true;
     },
   },
 };
@@ -125,8 +139,8 @@ export default {
   text-align: center;
   font-weight: 200;
   font-size: 1.2rem;
-  letter-spacing: .1em;
-  opacity: .8;
+  letter-spacing: 0.1em;
+  opacity: 0.8;
 }
 
 .content {
@@ -180,5 +194,4 @@ th {
 .rotate-left {
   transform: rotate(-90deg);
 }
-
 </style>

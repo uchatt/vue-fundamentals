@@ -49,6 +49,8 @@ export default {
   methods: {
     showPartInfo() {
       /** Use object syntax to pass parameters to routes. */
+      /** Alternative is to use ':to={name:'Parts', params:
+       *  {id: this.selectedPart.id, partType: this.selectedPart.type}} */
       this.$router.push({
         name: 'Parts',
         params: { id: this.selectedPart.id, partType: this.selectedPart.type },
