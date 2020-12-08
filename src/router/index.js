@@ -64,5 +64,11 @@ export default new Router({
       const isValidId = Number.isInteger(Number(to.params.id));
       next(isValidId);
     },
-  }],
+  },
+  {
+    path: '/cart',
+    name: 'Cart',
+    component: () => import('@/cart/ShoppingCart.vue'),
+  },
+  ],
 });

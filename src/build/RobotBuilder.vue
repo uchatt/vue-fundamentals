@@ -51,23 +51,6 @@
         @partSelected="(part) => (selectedRobot.base = part)"
       />
     </div>
-    <div>
-      <h1>Cart</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>Robot</th>
-            <th class="cost">Cost</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(robot, index) in cart" :key="index">
-            <td>{{ robot.head.title }}</td>
-            <td class="cost">{{ robot.cost }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
   </div>
 </template>
 
@@ -84,7 +67,7 @@ export default {
       /* eslint no-alert: 0 */
       /* eslint no-restricted-globals: 0 */
       const response = confirm(
-        'Your have not added your robot to the card, are you sure you want to leave?',
+        'You have not added your robot to the card, are you sure you want to leave?',
       );
       next(response);
     }
@@ -112,7 +95,9 @@ export default {
         + robot.torso.cost
         + robot.rightArm.cost
         + robot.base.cost;
-      this.cart.push({ ...robot, cost });
+        // Shorthand for Object.assign({}, robot, { cost })
+      this.$store.commit('addRobotToCart', { ...robot, cost });
+      // this.cart.push({ ...robot, cost });
       this.addedToCard = true;
     },
   },
@@ -157,6 +142,7 @@ export default {
   background: #ffff40b0;
   padding: 5px;
   border: 1px solid rgb(37, 132, 255);
+  cursor: pointer;
 }
 
 td,
