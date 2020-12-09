@@ -22,10 +22,11 @@
             </router-link>
           </li>
           <li class="nav-item cart relative">
-            <div class="absolute">{{ cartLength }}</div>
+            <div class="absolute" :class="{ cartActive: cartEmpty }">{{ cartLength }}</div>
             <router-link :to="{ name: 'Cart' }" exact>
               <svg
                 class="cart-icon"
+                :class="{ cartActive: cartEmpty }"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -45,6 +46,7 @@
       </nav>
     </header>
     <div class="container">
+      <!-- Multiple Router Views -->
       <aside class="router">
         <router-view name="sidebar" />
       </aside>
@@ -65,6 +67,9 @@ export default {
     },
     cartLength() {
       return this.$store.state.cart.length;
+    },
+    cartEmpty() {
+      return this.$store.state.cart.length > 0;
     },
   },
 };
@@ -153,6 +158,10 @@ aside {
   width: 1.8rem;
 }
 
+.cartActive {
+  color: #d6411b;
+}
+
 .nav-item.cart a {
   background-color: transparent;
 }
@@ -161,8 +170,7 @@ aside {
   border-radius: 50%;
   top: 0;
   left: -20px;
-  color: #222;
-  padding: .5rem;
+  padding: 0.5rem;
   font-size: 1.3rem;
   margin-right: 1rem;
 }
@@ -174,5 +182,4 @@ aside {
 .relative {
   position: relative;
 }
-
 </style>

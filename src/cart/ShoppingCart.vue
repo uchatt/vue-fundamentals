@@ -22,6 +22,29 @@
         </tr>
       </tbody>
     </table>
+
+    <h1 style="color: red;">You saved money on these Items</h1>
+    <table>
+      <thead>
+        <tr>
+          <th class="serial">SL</th>
+          <th class="robot-title">Robot</th>
+          <th class="cost">Cost</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(robot, index) in cartSaleItems" :key="index">
+          <td>{{ index }}</td>
+          <td class="robot-title">
+            <div>{{ robot.head.title }}</div>
+            <div :data-index="index" @click="removeFromCart" class="remove">Remove</div>
+          </td>
+          <td class="cost">
+            {{ robot.cost.toFixed(2) }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -32,6 +55,9 @@ export default {
     // Get cart array from vuex store
     cart() {
       return this.$store.state.cart;
+    },
+    cartSaleItems() {
+      return this.$store.getters.cartSaleItems;
     },
   },
   methods: {
@@ -80,7 +106,7 @@ tbody tr {
 .remove {
   color: rgb(170, 9, 9);
   padding: 0.2rem 0;
-  font-size: 0.4rem;
+  font-size: 0.6rem;
   letter-spacing: .06rem;
   text-align: left;
   text-decoration: underline;

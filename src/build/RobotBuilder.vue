@@ -24,31 +24,31 @@
       <PartSelector
         :parts="availableParts.heads"
         position="top"
-        @partSelected="(part) => (selectedRobot.head = part)"
+        @partSelected="part => (selectedRobot.head = part)"
       />
     </div>
     <div class="middle-row">
       <PartSelector
         :parts="availableParts.arms"
         position="left"
-        @partSelected="(part) => (selectedRobot.leftArm = part)"
+        @partSelected="part => (selectedRobot.leftArm = part)"
       />
       <PartSelector
         :parts="availableParts.torsos"
         position="center"
-        @partSelected="(part) => (selectedRobot.torso = part)"
+        @partSelected="part => (selectedRobot.torso = part)"
       />
       <PartSelector
         :parts="availableParts.arms"
         position="right"
-        @partSelected="(part) => (selectedRobot.rightArm = part)"
+        @partSelected="part => (selectedRobot.rightArm = part)"
       />
     </div>
     <div class="bottom-row">
       <PartSelector
         :parts="availableParts.bases"
         position="bottom"
-        @partSelected="(part) => (selectedRobot.base = part)"
+        @partSelected="part => (selectedRobot.base = part)"
       />
     </div>
   </div>
@@ -95,7 +95,7 @@ export default {
         + robot.torso.cost
         + robot.rightArm.cost
         + robot.base.cost;
-        // Shorthand for Object.assign({}, robot, { cost })
+      // Shorthand for Object.assign({}, robot, { cost })
       this.$store.commit('addRobotToCart', { ...robot, cost });
       // this.cart.push({ ...robot, cost });
       this.addedToCard = true;

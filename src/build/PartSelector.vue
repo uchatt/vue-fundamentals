@@ -60,17 +60,11 @@ export default {
       this.$emit('partSelected', this.selectedPart);
     },
     selectNextPart() {
-      this.selectedPartIndex = getNextValidIndex(
-        this.selectedPartIndex,
-        this.parts.length,
-      );
+      this.selectedPartIndex = getNextValidIndex(this.selectedPartIndex, this.parts.length);
       //   this.emitSelectedPart();
     },
     selectPreviousPart() {
-      this.selectedPartIndex = getPreviousValidIndex(
-        this.selectedPartIndex,
-        this.parts.length,
-      );
+      this.selectedPartIndex = getPreviousValidIndex(this.selectedPartIndex, this.parts.length);
       // no longer needed because of updated() hook
       //   this.emitSelectedPart();
     },
